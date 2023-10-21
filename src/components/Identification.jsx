@@ -1,6 +1,8 @@
-import FacebookIcon from '@mui/icons-material/Facebook';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import Header from "./Header";
+import Footer from "./Footer";
 
 const Identification = () => {
     const [loading, setLoading] = useState(false)
@@ -12,27 +14,30 @@ const Identification = () => {
         return emailRegex.test(email)
     }
 
-    const handleValidation = (email) => {
+    const handleValidation = (e, email) => {
+        e.preventDefault();
+
         setLoading(true)
 
         setTimeout(() => {
             setLoading(false)
 
             if(isEmailValid(email)) {
-                navigate('/sign-in')
+                navigate('/sign-in', { state: { email } })
             }
         }, 2000);
     }
     return (
-        <>
+        <div className="flex flex-col my-0 mx-auto w-[480px] max-w-full min-h-[500px]">
+            <Header />
+
             {loading && 
                 <div id="loading-container" className="h-1 w-full bg-gray-300 relative overflow-hidden">
                     <div id="loading-bar" className="h-1 bg-orange-400 absolute animate-loading-bar w-[50%]"></div>
                 </div>
-            }
-            
+            } 
             <div id="card" className="py-2 px-6">
-                <form method="post">
+                <form method="post" onSubmit={(e) => handleValidation(e, email)}>
                     <div className="flex flex-col">
                     <div className="flex flex-col items-center">
                         <h2 className="text-xl font-medium">Welcome to Jumia</h2>
@@ -59,7 +64,7 @@ const Identification = () => {
                     </div>
                     <div id="actions" className="mt-4">
                         <div id="action-btn-wrapper">
-                        <button onClick={handleValidation} type="submit" className="h-12 w-full bg-orange-400 rounded">
+                        <button type="submit" className="h-12 w-full bg-orange-400 rounded">
                             <span className="text-white text-base font-bold tracking-widest">Continue</span>
                         </button>
                         </div>
@@ -75,7 +80,9 @@ const Identification = () => {
                     </div>
                 </form>
             </div>
-        </>
+
+            <Footer />
+        </div>
     )
 }
 export default Identification;
