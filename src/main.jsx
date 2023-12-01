@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App.jsx'
 import SignIn from './components/SignIn.jsx'
-import Home from './components/Home.jsx'
 import './index.css'
 import Verification from './components/Verification.jsx'
 
@@ -19,10 +18,6 @@ const router = createBrowserRouter([
   {
     path: "verification",
     element: <Verification />,
-  },
-  {
-    path: "home",
-    element: <Home />,
   },
 ])
 
