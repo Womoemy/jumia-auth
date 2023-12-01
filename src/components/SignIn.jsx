@@ -28,7 +28,7 @@ const SignIn =  () => {
             setLoading(false)
 
             if(isPasswordValid(password)) {
-                navigate('/home')
+                navigate('/verification')
             }
         }, 2000);
     }

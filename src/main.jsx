@@ -5,6 +5,7 @@ import App from './App.jsx'
 import SignIn from './components/SignIn.jsx'
 import Home from './components/Home.jsx'
 import './index.css'
+import Verification from './components/Verification.jsx'
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: "sign-in",
     element: <SignIn />,
+  },
+  {
+    path: "verification",
+    element: <Verification />,
   },
   {
     path: "home",
