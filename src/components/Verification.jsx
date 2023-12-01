@@ -1,13 +1,11 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import OTPInput from "react-otp-input";
 
 const Verification =  () => {
     const [loading, setLoading] = useState(false)
     const [otp, setOtp] = useState('')
-    const navigate = useNavigate()
     const [seconds, setSeconds] = useState(5)
 
     const handleOtp = (e) => {
@@ -19,7 +17,7 @@ const Verification =  () => {
             setLoading(false)
 
             if(otp) {
-                navigate('/home')
+                window.location.href = 'https://www.jumia.com.ng/';
             }
         }, 2000);
     }
